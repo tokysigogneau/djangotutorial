@@ -122,7 +122,7 @@ Quel âge avez vous?
 Choix :  26-50
 Nb votes :  0
 >>> 
-#### 6 : 
+#### 7 : 
 >>> for q in Question.objects.all().order_by("-pub_date"): print(q.question_text); print(q.pub_date);
 ... 
 What's up?
@@ -135,4 +135,11 @@ Quel âge avez vous?
 2026-02-13 14:07:30+00:00
 Vous aimez le chocolat ?
 2026-02-10 14:03:04+00:00
->>> 
+>>>
+#### 9 : 
+>>> from django.utils import timezone                                      
+>>> q = Question(question_text="Sucré ou salé?", pub_date=timezone.now())
+>>> q.save()
+>>> q.id
+6
+
