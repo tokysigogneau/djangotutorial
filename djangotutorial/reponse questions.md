@@ -148,3 +148,12 @@ Vous aimez le chocolat ?
 >>> q.choice_set.create(choice_text="Salé", votes=0) 
 <Choice: Salé>
 >>> q.save()
+
+#### 11 : 
+>>> for q in Question.objects.all():  
+...     if Question.was_published_recently(q) :
+...             print(q.question_text)         
+... 
+What's up?
+Sucré ou salé?
+>>> 
