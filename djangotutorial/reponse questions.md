@@ -28,3 +28,6 @@ Quel âge avez vous?
 2026-02-13 14:07:30+00:00
 >>> 
 #### 3 : 
+>>> q = Question.objects.get(pk=2)
+>>> q
+<Question: Qui gagne en 1v1 : Toto ou Tata?>
