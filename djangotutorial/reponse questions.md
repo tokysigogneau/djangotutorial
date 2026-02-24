@@ -69,3 +69,56 @@ Quel âge avez vous?
 Quel âge avez vous?
 26-50
 >>> 
+
+#### 5 : 
+>>> for c in Choice.objects.all() : print(c.question); print ("Choix : ", c.choice_text); print("Nb votes : " , c.votes) 
+... 
+What's up?
+Choix :  Not much
+Nb votes :  0
+What's up?
+Choix :  The sky
+Nb votes :  0
+Qui gagne en 1v1 : Toto ou Tata?
+Choix :  Toto
+Nb votes :  0
+Qui gagne en 1v1 : Toto ou Tata?
+Choix :  Tata
+Nb votes :  0
+Vous aimez le chocolat ?
+Choix :  Bof
+Nb votes :  0
+Vous aimez le chocolat ?
+Choix :  Pas mal
+Nb votes :  0
+Vous aimez le chocolat ?
+Choix :  C'est bon
+Nb votes :  0
+Vous aimez le chocolat ?
+Choix :  Oui !!
+Nb votes :  0
+Votre matière préférée ?
+Choix :  Français
+Nb votes :  0
+Votre matière préférée ?
+Choix :  Math
+Nb votes :  0
+Votre matière préférée ?
+Choix :  Sport
+Nb votes :  0
+Votre matière préférée ?
+Choix :  Musique
+Nb votes :  0
+Quel âge avez vous?
+Choix :  0-12 ans
+Nb votes :  0
+Quel âge avez vous?
+Choix :  13-17 ans
+Nb votes :  0
+Quel âge avez vous?
+Choix :  18-25
+Nb votes :  0
+Quel âge avez vous?
+Choix :  26-50
+Nb votes :  0
+>>> 
