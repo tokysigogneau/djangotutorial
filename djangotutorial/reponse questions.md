@@ -142,4 +142,9 @@ Vous aimez le chocolat ?
 >>> q.save()
 >>> q.id
 6
-
+#### 10 : 
+>>> q.choice_set.create(choice_text="Sucré", votes=0)
+<Choice: Sucré>
+>>> q.choice_set.create(choice_text="Salé", votes=0) 
+<Choice: Salé>
+>>> q.save()
