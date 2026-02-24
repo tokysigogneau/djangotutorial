@@ -13,8 +13,8 @@ class QuestionAdmin(admin.ModelAdmin):
 
 class ChoicesAdmin(admin.ModelAdmin):
     list_display = ["choice_text"]
-    list_filter = [""]
-    ordering = [""]
+    list_filter = ["votes"]
+    ordering = ["votes"]
     search_fields = ["foreign_key__related_fieldname"]
 
 
