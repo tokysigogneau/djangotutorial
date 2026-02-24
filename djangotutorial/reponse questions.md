@@ -31,3 +31,41 @@ Quel âge avez vous?
 >>> q = Question.objects.get(pk=2)
 >>> q
 <Question: Qui gagne en 1v1 : Toto ou Tata?>
+
+#### 4 : 
+
+>>> for c in Choice.objects.all() : print(c.question); print (c.choice_text)    
+... 
+What's up?
+Not much
+What's up?
+The sky
+Qui gagne en 1v1 : Toto ou Tata?
+Toto
+Qui gagne en 1v1 : Toto ou Tata?
+Tata
+Vous aimez le chocolat ?
+Bof
+Vous aimez le chocolat ?
+Pas mal
+Vous aimez le chocolat ?
+C'est bon
+Vous aimez le chocolat ?
+Oui !!
+Votre matière préférée ?
+Français
+Votre matière préférée ?
+Math
+Votre matière préférée ?
+Sport
+Votre matière préférée ?
+Musique
+Quel âge avez vous?
+0-12 ans
+Quel âge avez vous?
+13-17 ans
+Quel âge avez vous?
+18-25
+Quel âge avez vous?
+26-50
+>>> 
