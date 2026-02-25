@@ -157,3 +157,10 @@ Vous aimez le chocolat ?
 What's up?
 Sucré ou salé?
 >>> 
+> 
+## 2.2.3
+
+### 1 :
+>>> Question.age(q)
+datetime.timedelta(seconds=86308, microseconds=518092)
+>>> 
