@@ -10,3 +10,12 @@
 </fieldset>
 <input type="submit" value="Vote">
 </form>
+
+<!--///////////-->
+
+<legend><h1> Résultat du sondage : {{ question.question_text }}</h1></legend>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% for text, votes, percent in question.get_choices %}
+    <ul>{{ text }} : {{ votes }} votes — {{ percent }}%</ul>
+{% endfor %}

@@ -30,8 +30,14 @@ class Question(models.Model):
     def get_choices(self):
         resultat = self.choice_set.aggregate(total=Sum('votes'))
         total = resultat['total']
-        return [(c.choice_text, c.votes, c.votes / total)
-                for c in self.choice_set.all()]
+
+        if total > 0 :
+            return [(c.choice_text, c.votes, c.votes / total * 100)
+                    for c in self.choice_set.all()]
+        else :
+            return [(c.choice_text, 0, 0)
+                    for c in self.choice_set.all()]
+
 
     def get_max_choice(self):
         choices = self.choice_set.all()
@@ -48,3 +54,21 @@ class Choice(models.Model):
 
     def __str__(self):
         return text_excerpt(self.choice_text, MAX_LENGTH)
+
+    def votes_repartition (self, primary_key):
+        q = Question.objects.get(pk=primary_key)
+        #nb_of_questions = q.choice_set.all().count()
+        total_votes = 0
+        repartition_list = []
+
+        for choice in q.choice_set.all():
+            total_votes += choice.votes
+
+        for choice in q.choice_set.all():
+            if total_votes >0:
+                repartition_list.append(choice.votes / total_votes * 100)
+            else:
+                print("le total de vote est à 0")
+
+
+        return repartition_list
