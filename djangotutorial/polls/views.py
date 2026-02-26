@@ -5,6 +5,8 @@ from django.urls import reverse
 from django.views import generic
 
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import TemplateView
+
 from .models import Question, Choice
 
 class IndexView(generic.ListView):
@@ -32,6 +34,27 @@ class DetailView(generic.DetailView):
 class ResultsView(generic.DetailView):
     model = Question
     template_name = "polls/results.html"
+
+class StatisticView(generic.ListView):
+    model = Question
+    template_name = "polls/statistics.html"
+    context_object_name = "questions"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["total_questions"] = Question.objects.count()
+        context["total_choice"] = Choice.objects.count()
+
+        # context["average_vote"]=
+        return context
+
+
+
+# class StatisticView(generic.StatisticView):
+#     model = Question
+#     template_name = "polls/statistics.html"
+#     total_questions = len(Question.objects.all())
+#     context = {"latest_question_list": total_questions}
 
 
 def vote(request, question_id):

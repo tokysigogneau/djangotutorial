@@ -1,0 +1,18 @@
+
+    <ul>
+        <h3>Nombre total de questions : {{ total_questions }} </h3>
+
+    </ul>
+
+    <ul>
+        <h3>Nombre total de choix : {{ total_choice }} </h3>
+
+    </ul>
+
+
+
+    <ul>
+    {% for question in all_question_list %}
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }} {{question.pub_date}}</a></li>
+    {% endfor %}
+    </ul>
