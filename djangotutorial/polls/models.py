@@ -2,7 +2,7 @@ import datetime
 
 from django.db import models
 from django.utils import timezone
-from django.db.models import Sum
+from django.db.models import Sum, Avg
 from django.utils.html import format_html
 
 MAX_LENGTH = 20
@@ -22,7 +22,8 @@ class Question(models.Model):
                                            MAX_LENGTH))
 
     def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
     def age(self):
         return timezone.now() - self.pub_date
