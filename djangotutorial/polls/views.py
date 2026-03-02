@@ -1,14 +1,18 @@
+from django.core.mail import send_mail
 from django.http import HttpResponse, HttpResponseRedirect
 from django.http import Http404
 from django.db.models import F
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+from .forms import QuestionAddForm
 
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 
 from .models import Question, Choice
+
+NB_MAX_CHOIX = 5
 
 class IndexView(generic.ListView):
     template_name = "polls/index.html"
@@ -56,10 +60,7 @@ class StatisticView(generic.ListView):
         context["total_questions"] = Question.objects.count()
         context["total_choice"] = Choice.objects.count()
 
-        # context["average_vote"]=
         return context
-
-
 
 # class StatisticView(generic.StatisticView):
 #     model = Question
@@ -89,3 +90,39 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
+
+def add(request):
+ return render(request, 'polls/add.html', {
+ 'liste_no_choix': range(NB_MAX_CHOIX)
+ })
+
+
+###############################
+
+def confirm_add(request):
+    # récupération du libellé de la question,
+    # sans les éventuels espaces avant et après
+    question_text = request.POST['question_text'].strip()
+    if question_text:
+        # ajout de la question si elle n'est pas vide
+        question = Question(question_text=question_text,
+        pub_date=timezone.now())
+        question.save()
+        # on traite à présent les champs de choix remplis
+        # (on s'arrête au premier vide)
+        for no_choix in range(NB_MAX_CHOIX):
+            nom_champ = 'choix_{}'.format(no_choix)
+            choice_text = request.POST[nom_champ].strip()
+            if choice_text:
+                choice = Choice(question=question,
+                choice_text=choice_text)
+                choice.save()
+            else:
+                break
+        return render(request, 'polls/confirm_add.html')
+    else:
+        # réaffichage du formulaire de saisie de la question
+        # avec le message d'erreur
+        return render(request, 'polls/add.html', {
+            'error_message': "You didn't enter a question text",
+})
