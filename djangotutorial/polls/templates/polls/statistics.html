@@ -1,4 +1,7 @@
+{% extends "base.html" %}
+{% load static %}
 
+{% block toto %}
     <ul>
         <h3>Nombre total de questions : {{ total_questions }} </h3>
 
@@ -16,3 +19,7 @@
         <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }} {{question.pub_date}}</a></li>
     {% endfor %}
     </ul>
+{% endblock %}
+
+{% block content %}
+{% endblock %}

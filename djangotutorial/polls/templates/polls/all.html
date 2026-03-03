@@ -1,3 +1,8 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block toto %}
+
 {% if all_question_list %}
     <ul>
     {% for question in all_question_list %}
@@ -7,3 +12,8 @@
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
+
+{% endblock %}
+
+{% block content %}
+{% endblock %}

@@ -8,15 +8,13 @@
 <body>
 
     <div id="header">
-            <p> HEADER : Bienvenu sur ce site de polls</p>
+        <p> HEADER : Bienvenu sur ce site de polls</p>
     </div>
 
     <div id="content">
-        <h2>Entry one</h2>
-        <p>This is my first entry.</p>
+        {% block content %}
 
-        <h2>Entry two</h2>
-        <p>This is my second entry.</p>
+        {% endblock %}
     </div>
 
     <div id="toto">

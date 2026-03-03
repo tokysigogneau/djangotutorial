@@ -1,3 +1,8 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block toto %}
+
 <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
 <fieldset>
@@ -19,3 +24,8 @@
 {% for text, votes, percent in question.get_choices %}
     <ul>{{ text }} : {{ votes }} votes — {{ percent }}%</ul>
 {% endfor %}
+
+{% endblock %}
+
+{% block content %}
+{% endblock %}
