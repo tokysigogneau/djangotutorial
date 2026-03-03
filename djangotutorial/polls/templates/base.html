@@ -9,6 +9,11 @@
 
     <div id="header">
         <p> HEADER : Bienvenu sur ce site de polls</p>
+        <a href="{% url 'polls:all' %}">All questions</a>
+        <a href="{% url 'polls:statistics' %}">Statistics</a>
+        <a href="{% url 'polls:add' %}">Add question</a>
+        <a href="{% url 'admin:index' %}">Admin</a>
+
     </div>
 
     <div id="content">
